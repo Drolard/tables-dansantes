@@ -364,6 +364,7 @@ function init(){
   myGallery.ajouter(993, 399);
   myGallery.ajouter(399, 399);
   myGallery.ajouter(500, 201);
+  myGallery.ajouter(2902, 512);
 
 }
 
