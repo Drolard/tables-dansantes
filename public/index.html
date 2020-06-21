@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+  <style media="screen">
+  canvas{
+    border: 1px solid purple;
+  }
+
+  canvas, table, .modifyTables{
+    display: inline-block;
+  }
+
+  .modifyTables{
+    width: 25vw;
+  }
+
+  table.multiplicateur{
+    border: 2px solid green;
+    text-align: center;
+  }
+
+  table.multiplicateur table{
+    border: 1px solid LightGreen;
+  }
+
+  table.nbPoints{
+    border: 2px solid red;
+    text-align: center;
+  }
+
+  table.nbPoints table{
+    border: 1px solid orange;
+  }
+
+  .singleTable{
+    width: 31vw;
+    border: 1px solid orange;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .singleTable span,
+  .singleTable button{
+    margin: 10px 2%;
+    width: 96%;
+  }
+
+  #galleryList{
+    margin-top: 10px;
+  }
+
+  .GallerieTable{
+    border: 1px solid pink;
+    text-align: center;
+  }
+  </style>
+
+  <canvas id="canvas" height="500px" width="500px"></canvas>
+
+  <div class="modifyTables">
+    <table class="multiplicateur">
+      <thead>
+        <tr>
+          <th colspan="2">Multiplicateur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2"><input type="number" step="0.1" value="2" id="multPlaceholder"/></td>
+        </tr>
+        <tr>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Modifier manuellement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button type="button" onclick="circleUpdate(0,-1)">-1</button></td>
+                  <td><button type="button" onclick="circleUpdate(0,+1)">+1</button></td>
+                </tr>
+                <tr>
+                  <td><button type="button" onclick="circleUpdate(0,-0.1)">-0.1</button></td>
+                  <td><button type="button" onclick="circleUpdate(0,+0.1)">+0.1</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Modifier avec animation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pas de l'animation</td>
+                  <td><input type="number" id="multStep" step="0.1" value="0.1"/></td>
+                </tr>
+                <tr>
+                  <td>Lancer/Arreter l'animation</td>
+                  <td><button type="button" id="startMultAnimation">Play &#9658;</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="nbPoints">
+      <thead>
+        <tr>
+          <th colspan="2">Nombre de points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2"><input type="number" step="1" value="10" id="nbPointsPlaceholder" min="0"/></td>
+        </tr>
+        <tr>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Modifier manuellement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button type="button" onclick="circleUpdate(-10,0)">-10</button></td>
+                  <td><button type="button" onclick="circleUpdate(+10,0)">+10</button></td>
+                </tr>
+                <tr>
+                  <td><button type="button" onclick="circleUpdate(-1,0)">-1</button></td>
+                  <td><button type="button" onclick="circleUpdate(+1,0)">+1</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Modifier avec animation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pas de l'animation</td>
+                  <td><input type="number" id="nbPointsStep" step="1" value="1"/></td>
+                </tr>
+                <tr>
+                  <td>Lancer/Arreter l'animation</td>
+                  <td><button type="button" id="startNbPointsAnimation">Play &#9658;</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="GallerieTable">
+      <thead>
+        <tr>
+          <th>Gallerie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button type="button" id="saveInGallery">Enregistrer dans ma gallerie</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="Gallerie">
+    <h2>Gallerie de Tables dansantes</h2>
+    <i>Attention votre gallerie est enregistrer dans le storage local, supprimer les cookies supprimera donc votre liste</i>
+    <div id="galleryList">
+    </div>
+  </div>
+
+  <script src="script.js"> </script>
+</body>
+</html>
